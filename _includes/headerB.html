@@ -1,0 +1,15 @@
+<header class="site-header" style="background-color: black">
+  <div class="navbar">
+    <a href="{{ site.baseurl }}/" class="logo"><span class="logo">
+        <img src="{{ site.baseurl }}{{ site.logo }}" width="48" height="48" /></span></a>
+
+    <div class="page-links">
+
+      {% for my_page in site.pages %}
+      {% if my_page.title %}
+      <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</header>
