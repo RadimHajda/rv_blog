@@ -20,12 +20,14 @@
         <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Lora:400,700' rel='stylesheet'
         type='text/css'>
+    
     <style amp-custom>
         {% capture include_to_scssify %}
             {% include styles.scss %}
         {% endcapture %}
             {{ include_to_scssify | scssify }}
     </style>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 
