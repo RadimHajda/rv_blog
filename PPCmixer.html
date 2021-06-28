@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+
+    <title>>PPC mixer klíčových slov</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PPC mixer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">PPC mixer</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="intro bg-dark">
+        <h1>PPC mixer klíčových slov</h1>
+        <p>Tvoříte klíčové slova pro Google Ads nebo Seznam Sklik? Ušetřete si práci s kombinacemi klíčových
+            slov pomocí tohoto nástroje.</p>
+    </div>
+
+    <div class="inputs bg-dark">
+        <ul id="box-holder">
+            <li id="checkA">
+                <h3>A</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkBox0" checked>
+                </div>
+
+                <div class="keyword-box">
+                    <textarea name="keywords" id="textArea0"></textarea>
+                </div>
+
+            </li>
+
+            <li id="checkB">
+                <h3>B</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkBox1" checked>
+                </div>
+
+                <div class="keyword-box">
+                    <textarea name="keywords" id="textArea1"></textarea>
+                </div>
+
+
+            </li>
+
+            <li class="inactive" id="checkC">
+                <h3>C</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkBox2">
+                </div>
+
+                <div class="keyword-box">
+                    <textarea name="keywords" id="textArea2" readonly></textarea>
+                </div>
+
+
+            </li>
+
+            <li class="inactive" id="checkD">
+                <h3>D</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkBox3">
+                </div>
+
+                <div class="keyword-box">
+                    <textarea name="keywords" id="textArea3" readonly></textarea>
+                </div>
+
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="options-holder bg-dark">
+        <div class="include-in-output">
+            <h3>Zahrnout do výstupu</h3>
+            <p class="select-all"><a href="#select" onclick="selectOutput()">Vybrat vše</a> | <a href="#deselect"
+                    onclick="deselectOutput()">Odznačit vše</a></p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBox4" checked> Volná
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBox5"> Frázová
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="checkBox6"> Přesná
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="holder">
+                <button type="button" id="btn_concetenate" class="btn btn1 btn-primary"
+                    onclick="concatenate()">Zřetězit</button>
+            </div>
+
+        </div>
+
+        <div class="include-in-output permutations">
+            <h3>Výstupní permutace</h3>
+            <p class="deselect-all"><a href="#select" onclick="selectPermutation()">Vybrat vše</a> | <a
+                    href="#deselect">Odznačit vše</a></p>
+            <div class="checkboxes" id="checkboxes" style="display: block;">
+                <label class="d_check"><input class="form-check-input" type="checkbox" value="" checked> A,B</label>
+                <label class="d_check"><input class="form-check-input" type="checkbox" value=""> B,A</label>
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="results bg-dark">
+        <div class="results-expected"><strong><span id="total">0</span> Výsledků</strong> </div>
+        <div class="results-holder">
+            <div id="table-holder">
+                <textarea id="textConcatenate"></textarea>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer bg-dark">
+        <div class="copyright">All content copyright <a href="mailto:vyskovskyroman@gmail.com">Roman Vyškovský</a> ©
+            2021 • All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

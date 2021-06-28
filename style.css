@@ -1,0 +1,129 @@
+
+body {
+  color: white;
+  background:gray;
+  font: 100% system-ui;
+  
+}
+
+.intro {
+  margin: 3% 3% 3% 3%;
+  padding: 3% 3% 3% 3%;  
+}
+
+.inputs {
+  margin: 3% 3% 3% 3%;
+  padding: 3% 3% 3% 3%;  
+}
+
+.keyword-box textarea {
+  background: white;
+  height: 250px;
+  overflow-y: auto;
+  width: 100%;
+  padding: 5px;
+  border: solid 5px #0d6efd;
+  
+}
+
+.form-check-input {
+  margin: auto;
+}
+
+
+#box-holder{
+  width: 100%;
+  text-align:center;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+#box-holder li {
+  display:inline-block;
+  margin-right:20px;
+  
+}
+
+#box-holder h3 {
+  font-size: 25px;
+  margin: auto;
+  line-height: 45px;
+  text-align: center;
+  height: 45px;
+}
+
+
+.create {
+  border: none;
+  margin-right: 0;
+  position: relative;
+  padding-top: 200px;
+  width: auto;
+}
+
+.options-holder {
+  overflow: hidden;
+  clear: both;
+  padding: 3% 3% 3% 3%;
+  margin: 3% 3% 3% 3%;
+
+}
+
+
+.include-in-output {
+  float: left;
+  width: 50%;
+  height: 250px;
+  padding-right: 10%;
+
+}
+
+.permutations {
+  overflow-y: auto;
+}
+
+.results {
+  margin: 3% 3% 3% 3%;
+  padding: 3% 3% 3% 3%;
+  display: block;
+}
+
+.results-expected {
+  padding-bottom: 3%;
+}
+
+#table-holder textarea {
+  height: 250px;
+  width: 100%;
+}
+
+.btn1 {
+  margin-top: 3%;
+  width:100%;
+}
+
+.d_check {
+  padding: 2% 2% 2% 2%;
+}
+
+.checkboxes label {
+  float: left;
+}
+
+#box-holder li.inactive .keyword-box textarea {
+  background: none repeat scroll 0 0 #ccc;
+  border: 5px solid gray;
+  cursor: not-allowed;
+  
+}
+
+.site-footer {
+  padding: 3% 3% 3% 3%;
+  margin: 3% 0% 0% 0%;
+ 
+}
+
+.copyright {
+  text-align: center;
+}
+  
