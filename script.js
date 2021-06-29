@@ -216,16 +216,21 @@ function changeDiacritics(inputArray1) {
     return outputArray1;
 }
 
-function checkboxReadOnly(checkBox,checkId,areaID) {
+function checkboxReadOnly(checkBox,checkId,areaID,buttonId,ddID) {
 
     let checkBoxId = document.getElementById(checkId);
     let area = document.getElementById(areaID);
+    let button = document.getElementById(buttonId);
+    let dropButton = document.getElementById(ddID);
 
     if(checkBox.checked == true) {
        
 
         checkBoxId.classList.remove("inactive");
         area.readOnly = false;
+        button.className = "showClass";
+        button.style.visibility = 'visible';
+        dropButton.style.width = "177px"; 
    
     }
 
@@ -233,6 +238,8 @@ function checkboxReadOnly(checkBox,checkId,areaID) {
 
         checkBoxId.classList.add("inactive");
         area.readOnly = true;
+        button.style.visibility = 'hidden';
+
 
     }
 
@@ -258,12 +265,69 @@ function selectPermutation() {
     }
 }
 
+function uniq(arr) {
+    var seen = {};
+    var ret_arr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (!(arr[i] in seen)) {
+            ret_arr.push(arr[i]);
+            seen[arr[i]] = true;
+        }
+    }
+    return ret_arr;
+
+}
+
 function deselectPermutation() {
     var elements = document.getElementsByClassName("d_check");
 
     for(var i =0;i<elements.length;i++) {
         elements[i].childNodes[0].checked = false;
     }
+}
+
+function clearSpecial(textID) {
+    var data = document.getElementById(textID).value.split('\n');
+
+    var specials = new RegExp("[.*+?^$#@|()\\[\\]{}\\\\]", "g");
+        
+
+    for(var i = 0;i<data.length;i++) {
+        data[i] = data[i].replace(/[&\/\\#, +()$~%.'":*?<>{}]/g,"",);
+    }
+
+
+    var output = "";
+
+    for (var i = 0; i < data.length; i++) {
+        if (i == 0) {
+            output = output + data[i];
+        }
+        else {
+            output = output + "\n" + data[i];
+        }
+    }
+
+    document.getElementById(textID).value = output;    
+}
+
+function clearDuplicity(textID) {
+
+    var data = document.getElementById(textID).value.split('\n');
+
+    var result = uniq(data);
+    var output = "";
+
+    for (var i = 0; i < result.length; i++) {
+        if (i == 0) {
+            output = output + result[i];
+        }
+        else {
+            output = output + "\n" + result[i];
+        }
+    }
+
+    document.getElementById(textID).value = output;
 }
 
 
@@ -576,25 +640,25 @@ window.onload = function () {
 
     checkBoxA.addEventListener('click', function () {
 
-        checkboxReadOnly(checkBoxA,"checkA","textArea0");
+        checkboxReadOnly(checkBoxA,"checkA","textArea0","dropA",'dA');
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });
 
     checkBoxB.addEventListener('click', function () {
-        checkboxReadOnly(checkBoxB,"checkB","textArea1");
+        checkboxReadOnly(checkBoxB,"checkB","textArea1","dropB","dB");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });
 
     checkBoxC.addEventListener('click', function () {
-        checkboxReadOnly(checkBoxC,"checkC","textArea2");
+        checkboxReadOnly(checkBoxC,"checkC","textArea2","dropC","dC");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });
 
     checkBoxD.addEventListener('click', function () {
-        checkboxReadOnly(checkBoxD,"checkD","textArea3");
+        checkboxReadOnly(checkBoxD,"checkD","textArea3","dropD","dD");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });

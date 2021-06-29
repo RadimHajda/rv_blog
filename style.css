@@ -102,6 +102,12 @@ body {
   width:100%;
 }
 
+.btn2 {
+  margin: 5% 3% 3% 6%;
+  width: 100%;
+}
+
+
 .d_check {
   padding: 2% 2% 2% 2%;
 }
@@ -126,4 +132,8 @@ body {
 .copyright {
   text-align: center;
 }
+
+
+
+
   

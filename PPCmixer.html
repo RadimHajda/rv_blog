@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"></script>
 
-    <title>>PPC mixer klíčových slov</title>
+    <title>PPC mixer klíčových slov</title>
 </head>
 
 <body>
@@ -56,6 +56,18 @@
                     <textarea name="keywords" id="textArea0"></textarea>
                 </div>
 
+                <div class="dropdown" id="dropA">
+                    <button class="btn btn-primary btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pokročilé funkce
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" id="dA">
+                      <li><button type="button" class="btn btn2 btn-primary" onclick="clearDuplicity('textArea0')">Odstranění duplicit</button></li>
+                      <li> <button type="button" class="btn btn2 btn-primary"  onclick="clearSpecial('textArea0')">Odstranění speciálních znaků</button></li>
+                    </ul>
+                  </div>
+
+
+
             </li>
 
             <li id="checkB">
@@ -68,10 +80,19 @@
                     <textarea name="keywords" id="textArea1"></textarea>
                 </div>
 
+                <div class="dropdown" id="dropB">
+                    <button class="btn btn-primary btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pokročilé funkce
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" id="dB">
+                      <li><button type="button" class="btn btn2 btn-primary" onclick="clearDuplicity('textArea1')">Odstranění duplicit</button></li>
+                      <li> <button type="button" class="btn btn2 btn-primary"  onclick="clearSpecial('textArea1')">Odstranění speciálních znaků</button></li>
+                    </ul>
+                  </div>
 
             </li>
 
-            <li class="inactive" id="checkC">
+            <li class="inactive" id="checkC" >
                 <h3>C</h3>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkBox2">
@@ -81,6 +102,15 @@
                     <textarea name="keywords" id="textArea2" readonly></textarea>
                 </div>
 
+                <div class="dropdown" id="dropC" style="visibility: hidden;">
+                    <button class="btn btn-primary btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pokročilé funkce
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark"  id="dC">
+                      <li><button type="button" class="btn btn2 btn-primary" onclick="clearDuplicity('textArea2')">Odstranění duplicit</button></li>
+                      <li> <button type="button" class="btn btn2 btn-primary"  onclick="clearSpecial('textArea2')">Odstranění speciálních znaků</button></li>
+                    </ul>
+                  </div>
 
             </li>
 
@@ -94,6 +124,15 @@
                     <textarea name="keywords" id="textArea3" readonly></textarea>
                 </div>
 
+                <div class="dropdown" id="dropD" style="visibility: hidden;">
+                    <button class="btn btn-primary btn1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pokročilé funkce
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" id="dD">
+                      <li><button type="button" class="btn btn2 btn-primary" onclick="clearDuplicity('textArea3')">Odstranění duplicit</button></li>
+                      <li> <button type="button" class="btn btn2 btn-primary"  onclick="clearSpecial('textArea3')">Odstranění speciálních znaků</button></li>
+                    </ul>
+                  </div>
 
             </li>
         </ul>
