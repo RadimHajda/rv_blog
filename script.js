@@ -418,7 +418,7 @@ function concatenate() {
 
         }
 
-        //for
+        
         var pomArray1 = [];
         var pomArray2 = [];
         var pomArray3 = [];
@@ -430,26 +430,26 @@ function concatenate() {
 
         activeArray = newActive;
 
-        console.log(activeArray);
+        
 
-        for(var i = 0;i<activeArray.length;i++){
-            for(var j = 0;j<activeArray[i].length;j++) {
+        for(var j = 0;j<activeArray.length;j++){
+            for(var k = 0;k<activeArray[j].length;k++) {
                 if(checkDia.checked) {
-                    var pomVal = activeArray[i][j];
-                    activeArray[i][j] = changeDiacriticsValue(pomVal);
+                    var pomVal = activeArray[j][k];
+                    activeArray[j][k] = changeDiacriticsValue(pomVal);
                 }
 
                 if(checkSpec.checked) {
-                    var pomVal = activeArray[i][j];
-                    activeArray[i][j] = clearSpecial(pomVal);
+                    var pomVal = activeArray[j][k];
+                    activeArray[j][k] = clearSpecial(pomVal);
                 }
             }
         }
 
         if(checkDupl.checked) {
-            for(var i = 0;i<activeArray.length;i++){
-                var pomVal = activeArray[i];
-                activeArray[i] = uniq(pomVal);
+            for(var l = 0;l<activeArray.length;l++){
+                var pomVal = activeArray[l];
+                activeArray[l] = uniq(pomVal);
             }
         }
 
