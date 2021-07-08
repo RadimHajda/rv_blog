@@ -6,14 +6,9 @@ body {
   
 }
 
-.intro {
-  margin: 1% 3% 1% 3%;
-  padding: 1% 3% 1% 3%;  
-}
-
-.inputs {
-  margin: 1% 3% 1% 3%;
-  padding: 1% 3% 1% 3%;  
+.mar-pad {
+  margin: 2% 2% 2% 2%;
+  padding: 2% 2% 2% 2%;  
 }
 
 .keyword-box textarea {
@@ -90,7 +85,7 @@ body {
 }
 
 .results-expected {
-  padding-bottom: 3%;
+  padding-bottom: 1%;
 }
 
 #table-holder textarea {
@@ -110,7 +105,7 @@ body {
 }
 
 .btn3 {
-  margin-top: 3%;
+  margin-top: 1%;
   margin-left: 25%;
   width:50%;
 }
@@ -122,8 +117,10 @@ body {
   padding: 2% 2% 2% 2%;
 }
 
-.d_check p {
-  width: 50px;
+.check-hide {
+  height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .checkboxes label {
@@ -138,7 +135,7 @@ body {
 }
 
 .site-footer {
-  padding: 1% 3% 3% 1%;
+  padding: 2% 2% 2% 2%;
   margin: 1% 0% 0% 0%;
  
 }
@@ -158,7 +155,7 @@ label {
 thead, tbody { display: block; }
 
 tbody {
-    height: 100px;       
+    height: 150px;   
     overflow-y: auto;    
     overflow-x: hidden;  
 }

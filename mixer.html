@@ -38,14 +38,14 @@
 
 
 
-    <div class="intro bg-dark">
+    <div class="mar-pad bg-dark">
         <h1>PPC mixer klíčových slov</h1>
         <p>Tvoříte klíčové slova pro Google Ads nebo Seznam Sklik? Ušetřete si práci s kombinacemi klíčových
             slov pomocí tohoto nástroje.</p>
     </div>
 
-    <div class="options-holder bg-dark">
-        <div class="include-in-output">
+    <div class="row  mar-pad bg-dark">
+        <div class="col">
             <h3>Zahrnout do výstupu</h3>
             <p class="select-all"><a href="#select" onclick="selectOutput()">Vybrat vše</a> | <a href="#deselect"
                     onclick="deselectOutput()">Odznačit vše</a></p>
@@ -78,11 +78,11 @@
 
         </div>
 
-        <div class="include-in-output permutations">
+        <div class="col">
             <h3>Výstupní permutace</h3>
             <p class="deselect-all"><a href="#select" onclick="selectPermutation()">Vybrat vše</a> | <a
                     href="#deselect"  onclick="deselectPermutation()">Odznačit vše</a></p>
-            <div class="checkboxes" id="checkboxes" style="display: block;">
+            <div class="checkboxes check-hide" id="checkboxes">
                 <label class="d_check"><input class="form-check-input" type="checkbox" value="" checked> A,B</label>
                 <label class="d_check"><input class="form-check-input" type="checkbox" value=""> B,A</label>
             </div>
@@ -90,8 +90,8 @@
         </div>
 
 
-        <div class="include-in-output">
-            <h3>Pokročílá úprava vstupů</h3>
+        <div class="col">
+            <h3>Úprava vstupů</h3>
             <p class="select-all"><a href="#select" onclick="selectSpecial()">Vybrat vše</a> | <a href="#deselect"
                     onclick="deselectSpecial()">Odznačit vše</a></p>
             <table >
@@ -128,7 +128,7 @@
     </div>
 
 
-    <div class="inputs bg-dark">
+    <div class="mar-pad bg-dark">
         <ul id="box-holder">
             <li id="checkA">
                 <h3>A</h3>
@@ -179,8 +179,6 @@
                     <textarea name="keywords" id="textArea3" readonly></textarea>
                 </div>
 
-                
-
             </li>
         </ul>
 
@@ -194,7 +192,7 @@
 
 
 
-    <div class="results bg-dark">
+    <div class="mar-pad bg-dark">
         <div class="results-expected"><h3>Výstup</h3> </div>
         <div class="results-holder">
             <div id="table-holder">
