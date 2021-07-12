@@ -14,7 +14,11 @@ function removeElementsByClass(className) {
 }
 function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
     var checkboxList = [];
-    var permutationList = [];
+    var permutationList1 = [];
+    var permutationList2 = [];
+    var permutationList3 = [];
+    var permutationList4 = [];
+
     if (checkBoxA.checked == true) {
         checkboxList.push("A");
     }
@@ -32,7 +36,7 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
     }
 
     if (checkboxList.length == 1) {
-        permutationList.push(checkboxList[0]);
+        permutationList1.push(checkboxList[0]);
     }
 
 
@@ -50,7 +54,7 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
                 pomArray1 = generatePermutations(pomArray);
 
                 for (k = 0; k < pomArray1.length; k++) {
-                    permutationList.push(pomArray1[k]);
+                    permutationList2.push(pomArray1[k]);
                 }
 
 
@@ -62,7 +66,7 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
             pomArray1 = generatePermutations(checkboxList);
 
             for (k = 0; k < pomArray1.length; k++) {
-                permutationList.push(pomArray1[k]);
+                permutationList3.push(pomArray1[k]);
             }
         }
 
@@ -76,7 +80,7 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
                 pomArray1 = generatePermutations(pomArray);
 
                 for (k = 0; k < pomArray1.length; k++) {
-                    permutationList.push(pomArray1[k]);
+                    permutationList3.push(pomArray1[k]);
                 }
             }
 
@@ -85,7 +89,7 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
             pomArray1 = generatePermutations(checkboxList);
 
             for (k = 0; k < pomArray1.length; k++) {
-                permutationList.push(pomArray1[k]);
+                permutationList4.push(pomArray1[k]);
             }
         }
 
@@ -97,10 +101,38 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
     }
 
 
+    removeElementsByClass("d_check1");
+    removeElementsByClass("d_check2");
+    removeElementsByClass("d_check3");
+    removeElementsByClass("d_check4");
     removeElementsByClass("d_check");
     removeElementsByClass("clear");
+    removeElementsByClass("title");
+    removeElementsByClass("deselect-all2");
 
-    for (var i = 0; i < permutationList.length; i++) {
+    if(permutationList1.length == 1 & permutationList2.length == 0 & permutationList3.length == 0 & permutationList4.length == 0) {
+        var hold = document.getElementById("checkboxes");
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.className = "form-check-input";
+        checkbox.name = "name" + i;
+        checkbox.value = "";
+        checkbox.id = "id" + i;
+        checkbox.checked = true;
+
+        var label = document.createElement('label');
+        label.className = "d_check";
+        label.htmlFor = "id";
+
+        hold.appendChild(label);
+        label.appendChild(checkbox)
+        label.appendChild(document.createTextNode(" " + permutationList1[0]));
+    }
+   
+    else {
+
+    for (var i = 0; i < permutationList2.length; i++) {
+
         var hold = document.getElementById("checkboxes");
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
@@ -110,44 +142,209 @@ function checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD) {
         checkbox.id = "id" + i;
 
         var label = document.createElement('label');
-        label.className = "d_check";
+        label.className = "d_check1 d_check";
+        
         label.htmlFor = "id";
 
-        //label.appendChild(document.createTextNode(permutationList[i]));
+        if (i == 0) {
 
-        if((checkboxList.length == 3) & (i==5)) {
+
+            //<p class="deselect-all"><a href="#select" onclick="selectPermutation()">Vybrat vše</a> | <a
+            //href="#deselect"  onclick="deselectPermutation()">Odznačit vše</a></p>
+
+            //var cDiv = document.createElement("div");
+            var p = document.createElement("p");
+            var a = document.createElement("a");
+            var a1 = document.createElement("a");
+            var h6 = document.createElement("h6")
+
+            h6.className = "title";
+            //cDiv.className = "clear";
+            p.className = "deselect-all2";
+            a.href = "#select";
+            a.text = "Vybrat vše";
+            a1.text = "Odznačit vše";
+
+            h6.appendChild(document.createTextNode("2. úroveň"));
+
             
+            a1.href = "#deselect";
+           
+            a.addEventListener('click', () => {
+                selectPermutation("d_check1");
+            });
+
+            a1.addEventListener('click', () => {
+                deselectPermutation("d_check1");
+            });
+
+
+            //cDiv.appendChild(document.createElement('br'))
+            p.appendChild(h6);
+            p.appendChild(a)
+            p.appendChild(document.createTextNode(" | "))
+
+            
+            p.appendChild(a1)
+            hold.appendChild(p);
+
             hold.appendChild(label);
             label.appendChild(checkbox)
-            label.appendChild(document.createTextNode(" "+permutationList[i]));
-
-            var cDiv = document.createElement("div");
-            cDiv.className = "clear";
-            cDiv.appendChild(document.createElement('br'))
-            hold.appendChild(cDiv);
-            console.log("brr")
-        }
-
-        else if ((checkboxList.length == 4) & (i == 11 || i==35)) {
-            hold.appendChild(label);
-            label.appendChild(checkbox)
-            label.appendChild(document.createTextNode(" "+permutationList[i]));
-            var cDiv = document.createElement("div");
-            cDiv.className = "clear";
-            cDiv.appendChild(document.createElement('br'))
-            hold.appendChild(cDiv);
-            console.log("brr")
+            label.appendChild(document.createTextNode(" " + permutationList2[i]));
         }
 
         else {
 
-        hold.appendChild(label);
-        label.appendChild(checkbox)
-        label.appendChild(document.createTextNode(" "+permutationList[i]));
 
+            hold.appendChild(label);
+            label.appendChild(checkbox)
+            label.appendChild(document.createTextNode(" " + permutationList2[i]));
         }
 
+        
     }
+
+    for (var i = 0; i < permutationList3.length; i++) {
+
+        var hold = document.getElementById("checkboxes");
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.className = "form-check-input";
+        checkbox.name = "name" + i;
+        checkbox.value = "";
+        checkbox.id = "id" + i;
+
+        var label = document.createElement('label');
+        label.className = "d_check3 d_check";
+        label.htmlFor = "id";
+
+        if (i == 0) {
+
+
+            //<p class="deselect-all"><a href="#select" onclick="selectPermutation()">Vybrat vše</a> | <a
+            //href="#deselect"  onclick="deselectPermutation()">Odznačit vše</a></p>
+
+            var cDiv = document.createElement("div");
+            var p = document.createElement("p");
+            var a = document.createElement("a");
+            var a1 = document.createElement("a");
+            var h6 = document.createElement("h6")
+            h6.className = "title";
+            cDiv.className = "clear";
+            p.className = "deselect-all2";
+            a.href = "#select";
+            a.text = "Vybrat vše";
+            a1.text = "Odznačit vše";
+
+            h6.appendChild(document.createTextNode("3. úroveň"));
+
+            
+            a1.href = "#deselect";
+           
+            a.addEventListener('click', () => {
+                selectPermutation("d_check3");
+            });
+
+            a1.addEventListener('click', () => {
+                deselectPermutation("d_check3");
+            });
+
+
+            cDiv.appendChild(document.createElement('br'))
+            p.appendChild(h6);
+            p.appendChild(a)
+            p.appendChild(document.createTextNode(" | "))
+
+            
+            p.appendChild(a1)
+            hold.appendChild(cDiv);
+            hold.appendChild(p);
+
+            hold.appendChild(label);
+            label.appendChild(checkbox)
+            label.appendChild(document.createTextNode(" " + permutationList3[i]));
+        }
+
+        else {
+
+
+            hold.appendChild(label);
+            label.appendChild(checkbox)
+            label.appendChild(document.createTextNode(" " + permutationList3[i]));
+        }
+    }
+
+    for (var i = 0; i < permutationList4.length; i++) {
+
+        var hold = document.getElementById("checkboxes");
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.className = "form-check-input";
+        checkbox.name = "name" + i;
+        checkbox.value = "";
+        checkbox.id = "id" + i;
+
+        var label = document.createElement('label');
+        label.className = "d_check4 d_check";
+        label.htmlFor = "id";
+
+        if (i == 0) {
+
+
+            //<p class="deselect-all"><a href="#select" onclick="selectPermutation()">Vybrat vše</a> | <a
+            //href="#deselect"  onclick="deselectPermutation()">Odznačit vše</a></p>
+
+            var cDiv = document.createElement("div");
+            var p = document.createElement("p");
+            var a = document.createElement("a");
+            var a1 = document.createElement("a");
+            var h6 = document.createElement("h6")
+            h6.className = "title";
+            cDiv.className = "clear";
+            p.className = "deselect-all2";
+            a.href = "#select";
+            a.text = "Vybrat vše";
+            a1.text = "Odznačit vše";
+
+            h6.appendChild(document.createTextNode("4. úroveň"));
+
+            
+            a1.href = "#deselect";
+           
+            a.addEventListener('click', () => {
+                selectPermutation("d_check4");
+            });
+
+            a1.addEventListener('click', () => {
+                deselectPermutation("d_check4");
+            });
+
+
+            cDiv.appendChild(document.createElement('br'))
+            p.appendChild(h6);
+            p.appendChild(a)
+            p.appendChild(document.createTextNode(" | "))
+
+            
+            p.appendChild(a1)
+            hold.appendChild(cDiv);
+            hold.appendChild(p);
+
+            hold.appendChild(label);
+            label.appendChild(checkbox)
+            label.appendChild(document.createTextNode(" " + permutationList4[i]));
+        }
+
+        else {
+
+
+            hold.appendChild(label);
+            label.appendChild(checkbox)
+            label.appendChild(document.createTextNode(" " + permutationList4[i]));
+        }
+    }
+
+}
 
 }
 
@@ -264,13 +461,13 @@ function changeDiacriticsValue(input) {
     return word;
 }
 
-function checkboxReadOnly(checkBox,checkId,areaID) {
+function checkboxReadOnly(checkBox, checkId, areaID) {
 
     let checkBoxId = document.getElementById(checkId);
     let area = document.getElementById(areaID);
-    
-   
-    if(checkBox.checked == true) {
+
+
+    if (checkBox.checked == true) {
         checkBoxId.classList.remove("inactive");
         area.readOnly = false;
     }
@@ -295,10 +492,10 @@ function deselectOutput() {
     document.getElementById("checkBox6").checked = false;
 }
 
-function selectPermutation() {
-    var elements = document.getElementsByClassName("d_check");
+function selectPermutation(className) {
+    var elements = document.getElementsByClassName(className);
 
-    for(var i =0;i<elements.length;i++) {
+    for (var i = 0; i < elements.length; i++) {
         elements[i].childNodes[0].checked = true;
     }
 }
@@ -316,10 +513,10 @@ function uniq(arr) {
 
 }
 
-function deselectPermutation() {
-    var elements = document.getElementsByClassName("d_check");
+function deselectPermutation(className) {
+    var elements = document.getElementsByClassName(className);
 
-    for(var i =0;i<elements.length;i++) {
+    for (var i = 0; i < elements.length; i++) {
         elements[i].childNodes[0].checked = false;
     }
 }
@@ -337,18 +534,18 @@ function deselectSpecial() {
 }
 
 function clearSpecial(text) {
-        
+
     var output = "";
-   
-    output = text.replace(/[&#@\/\\#, +()$~%.'":*?<>{}]/g,"",);
-    
+
+    output = text.replace(/[&#@\/\\#, +()$~%.'":*?<>{}]/g, "",);
+
     return output;
 }
 
 function clearDuplicity(text) {
     var result = uniq(text);
     return result;
- 
+
 }
 
 
@@ -419,11 +616,11 @@ function concatenate() {
 
             else if (permArray[i][j] == "D") {
                 activeArray.push(textD.value.replace(/\r\n/g, "\n").split("\n"));
-            } 
+            }
 
         }
 
-        
+
         var pomArray1 = [];
         var pomArray2 = [];
         var pomArray3 = [];
@@ -435,30 +632,30 @@ function concatenate() {
 
         activeArray = newActive;
 
-        
 
-        for(var j = 0;j<activeArray.length;j++){
-            for(var k = 0;k<activeArray[j].length;k++) {
+
+        for (var j = 0; j < activeArray.length; j++) {
+            for (var k = 0; k < activeArray[j].length; k++) {
                 //if(checkDia.checked) {
-                    //var pomVal = activeArray[j][k];
-                    //activeArray[j][k] = changeDiacriticsValue(pomVal);
+                //var pomVal = activeArray[j][k];
+                //activeArray[j][k] = changeDiacriticsValue(pomVal);
                 //}
 
-                if(checkSpec.checked) {
+                if (checkSpec.checked) {
                     var pomVal = activeArray[j][k];
                     activeArray[j][k] = clearSpecial(pomVal);
                 }
             }
         }
 
-        if(checkDupl.checked) {
-            for(var l = 0;l<activeArray.length;l++){
+        if (checkDupl.checked) {
+            for (var l = 0; l < activeArray.length; l++) {
                 var pomVal = activeArray[l];
                 activeArray[l] = uniq(pomVal);
             }
         }
 
-        
+
 
         console.log(activeArray);
 
@@ -474,9 +671,9 @@ function concatenate() {
                 var changePom = changeDiacritics(pom);
 
                 if (checkExact.checked) {
-                    if(diacriticsTest(pom)){
-                    outputArray.push(exact(pom));
-                    outputArray.push(exact(changePom));
+                    if (diacriticsTest(pom)) {
+                        outputArray.push(exact(pom));
+                        outputArray.push(exact(changePom));
                     }
                     else {
                         outputArray.push(exact(pom));
@@ -485,74 +682,74 @@ function concatenate() {
                 }
 
                 if (checkPhrase.checked) {
-                    if(diacriticsTest(pom)){
+                    if (diacriticsTest(pom)) {
                         outputArray.push(phrase(pom));
                         outputArray.push(phrase(changePom));
                     }
                     else {
                         outputArray.push(phrase(pom));
                     }
-                   
+
                 }
 
 
                 if (chcekBroad.checked) {
-                    if(diacriticsTest(pom)){
-                    outputArray.push(broad(pom));
-                    outputArray.push(broad(changePom));
+                    if (diacriticsTest(pom)) {
+                        outputArray.push(broad(pom));
+                        outputArray.push(broad(changePom));
                     }
                     else {
                         outputArray.push(broad(pom));
                     }
-                    
+
                 }
 
-               
-            }
-
-           else if(radioNoDia.checked) {
-            var changePom = changeDiacritics(pom);
-
-            if (checkExact.checked)  {
-
-                outputArray.push(exact(changePom));
 
             }
 
-            if (checkPhrase.checked ) {
-               
-                outputArray.push(phrase(changePom));
+            else if (radioNoDia.checked) {
+                var changePom = changeDiacritics(pom);
+
+                if (checkExact.checked) {
+
+                    outputArray.push(exact(changePom));
+
+                }
+
+                if (checkPhrase.checked) {
+
+                    outputArray.push(phrase(changePom));
+                }
+
+
+
+                if (chcekBroad.checked) {
+
+                    outputArray.push(broad(changePom));
+                }
+
+
             }
 
-          
+            else {
+                if (checkExact.checked) {
 
-            if (chcekBroad.checked) {
-                
-                outputArray.push(broad(changePom));
+                    outputArray.push(exact(pom));
+
+                }
+
+                if (checkPhrase.checked) {
+
+                    outputArray.push(phrase(pom));
+                }
+
+
+
+                if (chcekBroad.checked) {
+
+                    outputArray.push(broad(pom));
+                }
             }
-
-
-           }
-
-           else {
-            if (checkExact.checked)  {
-
-                outputArray.push(exact(pom));
-
-            }
-
-            if (checkPhrase.checked ) {
-               
-                outputArray.push(phrase(pom));
-            }
-
-          
-
-            if (chcekBroad.checked) {
-                
-                outputArray.push(broad(pom));
-            }
-           }
 
         }
 
@@ -567,87 +764,87 @@ function concatenate() {
 
                     if (radioDiaAnNoDia.checked) {
                         var changePom = changeDiacritics(pom);
-        
+
                         if (checkExact.checked) {
-                            if(diacriticsTest(pom)){
-                            outputArray.push(exact(pom));
-                            outputArray.push(exact(changePom));
+                            if (diacriticsTest(pom)) {
+                                outputArray.push(exact(pom));
+                                outputArray.push(exact(changePom));
                             }
                             else {
                                 outputArray.push(exact(pom));
                             }
-        
+
                         }
-        
+
                         if (checkPhrase.checked) {
-                            if(diacriticsTest(pom)){
+                            if (diacriticsTest(pom)) {
                                 outputArray.push(phrase(pom));
                                 outputArray.push(phrase(changePom));
                             }
                             else {
                                 outputArray.push(phrase(pom));
                             }
-                           
+
                         }
-        
-        
+
+
                         if (chcekBroad.checked) {
-                            if(diacriticsTest(pom)){
-                            outputArray.push(broad(pom));
-                            outputArray.push(broad(changePom));
+                            if (diacriticsTest(pom)) {
+                                outputArray.push(broad(pom));
+                                outputArray.push(broad(changePom));
                             }
                             else {
                                 outputArray.push(broad(pom));
                             }
-                            
+
                         }
-        
-                       
+
+
                     }
-        
-                   else if(radioNoDia.checked) {
-                    var changePom = changeDiacritics(pom);
-        
-                    if (checkExact.checked)  {
-        
-                        outputArray.push(exact(changePom));
-        
+
+                    else if (radioNoDia.checked) {
+                        var changePom = changeDiacritics(pom);
+
+                        if (checkExact.checked) {
+
+                            outputArray.push(exact(changePom));
+
+                        }
+
+                        if (checkPhrase.checked) {
+
+                            outputArray.push(phrase(changePom));
+                        }
+
+
+
+                        if (chcekBroad.checked) {
+
+                            outputArray.push(broad(changePom));
+                        }
+
+
                     }
-        
-                    if (checkPhrase.checked ) {
-                       
-                        outputArray.push(phrase(changePom));
+
+                    else {
+                        if (checkExact.checked) {
+
+                            outputArray.push(exact(pom));
+
+                        }
+
+                        if (checkPhrase.checked) {
+
+                            outputArray.push(phrase(pom));
+                        }
+
+
+
+                        if (chcekBroad.checked) {
+
+                            outputArray.push(broad(pom));
+                        }
                     }
-        
-                  
-        
-                    if (chcekBroad.checked) {
-                        
-                        outputArray.push(broad(changePom));
-                    }
-        
-        
-                   }
-        
-                   else {
-                    if (checkExact.checked)  {
-        
-                        outputArray.push(exact(pom));
-        
-                    }
-        
-                    if (checkPhrase.checked ) {
-                       
-                        outputArray.push(phrase(pom));
-                    }
-        
-                  
-        
-                    if (chcekBroad.checked) {
-                        
-                        outputArray.push(broad(pom));
-                    }
-                   }
 
                 }
             }
@@ -666,87 +863,87 @@ function concatenate() {
 
                         if (radioDiaAnNoDia.checked) {
                             var changePom = changeDiacritics(pom);
-            
+
                             if (checkExact.checked) {
-                                if(diacriticsTest(pom)){
-                                outputArray.push(exact(pom));
-                                outputArray.push(exact(changePom));
+                                if (diacriticsTest(pom)) {
+                                    outputArray.push(exact(pom));
+                                    outputArray.push(exact(changePom));
                                 }
                                 else {
                                     outputArray.push(exact(pom));
                                 }
-            
+
                             }
-            
+
                             if (checkPhrase.checked) {
-                                if(diacriticsTest(pom)){
+                                if (diacriticsTest(pom)) {
                                     outputArray.push(phrase(pom));
                                     outputArray.push(phrase(changePom));
                                 }
                                 else {
                                     outputArray.push(phrase(pom));
                                 }
-                               
+
                             }
-            
-            
+
+
                             if (chcekBroad.checked) {
-                                if(diacriticsTest(pom)){
-                                outputArray.push(broad(pom));
-                                outputArray.push(broad(changePom));
+                                if (diacriticsTest(pom)) {
+                                    outputArray.push(broad(pom));
+                                    outputArray.push(broad(changePom));
                                 }
                                 else {
                                     outputArray.push(broad(pom));
                                 }
-                                
+
                             }
-            
-                           
+
+
                         }
-            
-                       else if(radioNoDia.checked) {
-                        var changePom = changeDiacritics(pom);
-            
-                        if (checkExact.checked)  {
-            
-                            outputArray.push(exact(changePom));
-            
+
+                        else if (radioNoDia.checked) {
+                            var changePom = changeDiacritics(pom);
+
+                            if (checkExact.checked) {
+
+                                outputArray.push(exact(changePom));
+
+                            }
+
+                            if (checkPhrase.checked) {
+
+                                outputArray.push(phrase(changePom));
+                            }
+
+
+
+                            if (chcekBroad.checked) {
+
+                                outputArray.push(broad(changePom));
+                            }
+
+
                         }
-            
-                        if (checkPhrase.checked ) {
-                           
-                            outputArray.push(phrase(changePom));
+
+                        else {
+                            if (checkExact.checked) {
+
+                                outputArray.push(exact(pom));
+
+                            }
+
+                            if (checkPhrase.checked) {
+
+                                outputArray.push(phrase(pom));
+                            }
+
+
+
+                            if (chcekBroad.checked) {
+
+                                outputArray.push(broad(pom));
+                            }
                         }
-            
-                      
-            
-                        if (chcekBroad.checked) {
-                            
-                            outputArray.push(broad(changePom));
-                        }
-            
-            
-                       }
-            
-                       else {
-                        if (checkExact.checked)  {
-            
-                            outputArray.push(exact(pom));
-            
-                        }
-            
-                        if (checkPhrase.checked ) {
-                           
-                            outputArray.push(phrase(pom));
-                        }
-            
-                      
-            
-                        if (chcekBroad.checked) {
-                            
-                            outputArray.push(broad(pom));
-                        }
-                       }
                     }
                 }
             }
@@ -767,87 +964,87 @@ function concatenate() {
 
                             if (radioDiaAnNoDia.checked) {
                                 var changePom = changeDiacritics(pom);
-                
+
                                 if (checkExact.checked) {
-                                    if(diacriticsTest(pom)){
-                                    outputArray.push(exact(pom));
-                                    outputArray.push(exact(changePom));
+                                    if (diacriticsTest(pom)) {
+                                        outputArray.push(exact(pom));
+                                        outputArray.push(exact(changePom));
                                     }
                                     else {
                                         outputArray.push(exact(pom));
                                     }
-                
+
                                 }
-                
+
                                 if (checkPhrase.checked) {
-                                    if(diacriticsTest(pom)){
+                                    if (diacriticsTest(pom)) {
                                         outputArray.push(phrase(pom));
                                         outputArray.push(phrase(changePom));
                                     }
                                     else {
                                         outputArray.push(phrase(pom));
                                     }
-                                   
+
                                 }
-                
-                
+
+
                                 if (chcekBroad.checked) {
-                                    if(diacriticsTest(pom)){
-                                    outputArray.push(broad(pom));
-                                    outputArray.push(broad(changePom));
+                                    if (diacriticsTest(pom)) {
+                                        outputArray.push(broad(pom));
+                                        outputArray.push(broad(changePom));
                                     }
                                     else {
                                         outputArray.push(broad(pom));
                                     }
-                                    
+
                                 }
-                
-                               
+
+
                             }
-                
-                           else if(radioNoDia.checked) {
-                            var changePom = changeDiacritics(pom);
-                
-                            if (checkExact.checked)  {
-                
-                                outputArray.push(exact(changePom));
-                
+
+                            else if (radioNoDia.checked) {
+                                var changePom = changeDiacritics(pom);
+
+                                if (checkExact.checked) {
+
+                                    outputArray.push(exact(changePom));
+
+                                }
+
+                                if (checkPhrase.checked) {
+
+                                    outputArray.push(phrase(changePom));
+                                }
+
+
+
+                                if (chcekBroad.checked) {
+
+                                    outputArray.push(broad(changePom));
+                                }
+
+
                             }
-                
-                            if (checkPhrase.checked ) {
-                               
-                                outputArray.push(phrase(changePom));
+
+                            else {
+                                if (checkExact.checked) {
+
+                                    outputArray.push(exact(pom));
+
+                                }
+
+                                if (checkPhrase.checked) {
+
+                                    outputArray.push(phrase(pom));
+                                }
+
+
+
+                                if (chcekBroad.checked) {
+
+                                    outputArray.push(broad(pom));
+                                }
                             }
-                
-                          
-                
-                            if (chcekBroad.checked) {
-                                
-                                outputArray.push(broad(changePom));
-                            }
-                
-                
-                           }
-                
-                           else {
-                            if (checkExact.checked)  {
-                
-                                outputArray.push(exact(pom));
-                
-                            }
-                
-                            if (checkPhrase.checked ) {
-                               
-                                outputArray.push(phrase(pom));
-                            }
-                
-                          
-                
-                            if (chcekBroad.checked) {
-                                
-                                outputArray.push(broad(pom));
-                            }
-                           }
                         }
                     }
                 }
@@ -877,7 +1074,7 @@ function concatenate() {
         }
     }
 
-    
+
     //document.getElementById("total").innerHTML = total;
     document.getElementById("textConcatenate").value = output;
 
@@ -898,25 +1095,25 @@ window.onload = function () {
 
     checkBoxA.addEventListener('click', function () {
 
-        checkboxReadOnly(checkBoxA,"checkA","textArea0");
+        checkboxReadOnly(checkBoxA, "checkA", "textArea0");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });
 
     checkBoxB.addEventListener('click', function () {
-        checkboxReadOnly(checkBoxB,"checkB","textArea1");
+        checkboxReadOnly(checkBoxB, "checkB", "textArea1");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });
 
     checkBoxC.addEventListener('click', function () {
-        checkboxReadOnly(checkBoxC,"checkC","textArea2");
+        checkboxReadOnly(checkBoxC, "checkC", "textArea2");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });
 
     checkBoxD.addEventListener('click', function () {
-        checkboxReadOnly(checkBoxD,"checkD","textArea3");
+        checkboxReadOnly(checkBoxD, "checkD", "textArea3");
         checkBoxes(checkBoxA, checkBoxB, checkBoxC, checkBoxD)
 
     });

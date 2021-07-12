@@ -78,13 +78,22 @@
 
         </div>
 
+
         <div class="col">
             <h3>Výstupní permutace</h3>
-            <p class="deselect-all"><a href="#select" onclick="selectPermutation()">Vybrat vše</a> | <a
-                    href="#deselect"  onclick="deselectPermutation()">Odznačit vše</a></p>
+            <div class="deselect-all2">
+                <p>
+                <h6 class="title">2. úroveň</h6>
+                <a href="#select" onclick="selectPermutation('d_check2')">Vybrat vše</a> |
+                <a href="#deselect" onclick="deselectPermutation('d_check2')">Odznačit vše</a>
+                </p>
+
+            </div>
+
             <div class="checkboxes check-hide" id="checkboxes">
-                <label class="d_check"><input class="form-check-input" type="checkbox" value="" checked> A,B</label>
-                <label class="d_check"><input class="form-check-input" type="checkbox" value=""> B,A</label>
+                <label class="d_check2 d_check"><input class="form-check-input" type="checkbox" value="" checked>
+                    A,B</label>
+                <label class="d_check2 d_check"><input class="form-check-input" type="checkbox" value=""> B,A</label>
             </div>
 
         </div>
@@ -94,19 +103,21 @@
             <h3>Úprava vstupů</h3>
             <p class="select-all"><a href="#select" onclick="selectSpecial()">Vybrat vše</a> | <a href="#deselect"
                     onclick="deselectSpecial()">Odznačit vše</a></p>
-            <table >
+            <table>
                 <tbody>
                     <tr>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBox8"> Odstranit speciální znaky
+                                <input class="form-check-input" type="checkbox" value="" id="checkBox8"> Odstranit
+                                speciální znaky
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="checkBox9"> Odstranit duplicitu
+                                <input class="form-check-input" type="checkbox" value="" id="checkBox9"> Odstranit
+                                duplicitu
                             </div>
                         </td>
                     </tr>
@@ -121,21 +132,21 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio1" checked>
                 <label class="form-check-label" for="flexRadioDefault1">
-                  S diakritikou
+                    S diakritikou
                 </label>
-              </div>
-              <div class="form-check">
+            </div>
+            <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio2">
                 <label class="form-check-label" for="flexRadioDefault2">
-                  Bez diakritiky
+                    Bez diakritiky
                 </label>
-              </div>
-              <div class="form-check">
+            </div>
+            <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadio3">
                 <label class="form-check-label" for="flexRadioDefault3">
-                  S diakritikou i bez ní
+                    S diakritikou i bez ní
                 </label>
-              </div>
+            </div>
         </div>
 
 
@@ -155,7 +166,7 @@
                     <textarea name="keywords" id="textArea0"></textarea>
                 </div>
 
-        
+
             </li>
 
             <li id="checkB">
@@ -168,11 +179,11 @@
                     <textarea name="keywords" id="textArea1"></textarea>
                 </div>
 
-                
+
 
             </li>
 
-            <li class="inactive" id="checkC" >
+            <li class="inactive" id="checkC">
                 <h3>C</h3>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkBox2">
@@ -203,12 +214,14 @@
         </div>
     </div>
 
-    
+
 
 
 
     <div class="mar-pad bg-dark">
-        <div class="results-expected"><h3>Výstup</h3> </div>
+        <div class="results-expected">
+            <h3>Výstup</h3>
+        </div>
         <div class="results-holder">
             <div id="table-holder">
                 <textarea id="textConcatenate"></textarea>
@@ -217,8 +230,7 @@
         </div>
 
         <div class="holder">
-            <button type="button" id="btn_concetenate" class="btn btn3 btn-primary "
-                onclick="copy()">Copy</button>
+            <button type="button" id="btn_concetenate" class="btn btn3 btn-primary " onclick="copy()">Copy</button>
         </div>
     </div>
 
