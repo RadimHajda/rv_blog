@@ -21,8 +21,8 @@ body {
   
 }
 
-.form-check-input {
-  margin: auto;
+.form-check {
+  margin-left: 1%;
 }
 
 
@@ -67,7 +67,7 @@ body {
 
 .include-in-output {
   float: left;
-  width: 30%;
+  width: 25%;
   height: 250px;
   padding-right: 5%;
   padding-left: 5%;
@@ -144,9 +144,7 @@ body {
   text-align: center;
 }
 
-label {
-  white-space: pre-wrap;
-}
+
 
 .clear{
   clear:both
@@ -160,5 +158,10 @@ tbody {
     overflow-x: hidden;  
 }
 
+.img-responsive {
+  display: block;
+  max-width: 50%;
+  max-height: 50%;
+}
 
   

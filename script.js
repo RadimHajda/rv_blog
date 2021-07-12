@@ -364,9 +364,14 @@ function concatenate() {
     var checkPhrase = document.getElementById("checkBox5");
     var chcekBroad = document.getElementById("checkBox4");
 
-    var checkDia = document.getElementById("checkBox7");
+    //var checkDia = document.getElementById("checkBox7");
     var checkSpec = document.getElementById("checkBox8");
     var checkDupl = document.getElementById("checkBox9");
+
+    var radioDia = document.getElementById("flexRadio1");
+    var radioNoDia = document.getElementById("flexRadio2");
+    var radioDiaAnNoDia = document.getElementById("flexRadio3");
+
 
     var checkPerm = document.getElementsByClassName("d_check")
     var permArray = [];
@@ -434,10 +439,10 @@ function concatenate() {
 
         for(var j = 0;j<activeArray.length;j++){
             for(var k = 0;k<activeArray[j].length;k++) {
-                if(checkDia.checked) {
-                    var pomVal = activeArray[j][k];
-                    activeArray[j][k] = changeDiacriticsValue(pomVal);
-                }
+                //if(checkDia.checked) {
+                    //var pomVal = activeArray[j][k];
+                    //activeArray[j][k] = changeDiacriticsValue(pomVal);
+                //}
 
                 if(checkSpec.checked) {
                     var pomVal = activeArray[j][k];
@@ -460,42 +465,94 @@ function concatenate() {
         if (activeLength == 1) {
             var pom = activeArray[0];
 
-            if (diacriticsTest(pom) == true) {
+            const lowerCased = pom.map(name => name.toLowerCase());
 
+            pom = lowerCased;
+
+
+            if (radioDiaAnNoDia.checked) {
                 var changePom = changeDiacritics(pom);
 
-
-                if (checkExact.checked == true) {
-
+                if (checkExact.checked) {
+                    if(diacriticsTest(pom)){
                     outputArray.push(exact(pom));
                     outputArray.push(exact(changePom));
+                    }
+                    else {
+                        outputArray.push(exact(pom));
+                    }
 
                 }
 
-                if (checkPhrase.checked == true) {
-                    outputArray.push(phrase(pom));
-                    outputArray.push(phrase(changePom));
+                if (checkPhrase.checked) {
+                    if(diacriticsTest(pom)){
+                        outputArray.push(phrase(pom));
+                        outputArray.push(phrase(changePom));
+                    }
+                    else {
+                        outputArray.push(phrase(pom));
+                    }
+                   
                 }
 
-                if (chcekBroad.checked == true) {
+
+                if (chcekBroad.checked) {
+                    if(diacriticsTest(pom)){
                     outputArray.push(broad(pom));
                     outputArray.push(broad(changePom));
+                    }
+                    else {
+                        outputArray.push(broad(pom));
+                    }
+                    
                 }
 
-            } else {
-                if (checkExact.checked == true) {
-
-                    outputArray.push(exact(pom));
-                }
-
-                if (checkPhrase.checked == true) {
-                    outputArray.push(phrase(pom));
-                }
-
-                if (chcekBroad.checked == true) {
-                    outputArray.push(broad(pom));
-                }
+               
             }
+
+           else if(radioNoDia.checked) {
+            var changePom = changeDiacritics(pom);
+
+            if (checkExact.checked)  {
+
+                outputArray.push(exact(changePom));
+
+            }
+
+            if (checkPhrase.checked ) {
+               
+                outputArray.push(phrase(changePom));
+            }
+
+          
+
+            if (chcekBroad.checked) {
+                
+                outputArray.push(broad(changePom));
+            }
+
+
+           }
+
+           else {
+            if (checkExact.checked)  {
+
+                outputArray.push(exact(pom));
+
+            }
+
+            if (checkPhrase.checked ) {
+               
+                outputArray.push(phrase(pom));
+            }
+
+          
+
+            if (chcekBroad.checked) {
+                
+                outputArray.push(broad(pom));
+            }
+           }
 
         }
 
@@ -508,42 +565,89 @@ function concatenate() {
 
                     var pom = [pomArray1[k].toLowerCase(), pomArray2[l].toLowerCase()];
 
-                    if (diacriticsTest(pom) == true) {
-
+                    if (radioDiaAnNoDia.checked) {
                         var changePom = changeDiacritics(pom);
-
-
-                        if (checkExact.checked == true) {
-
+        
+                        if (checkExact.checked) {
+                            if(diacriticsTest(pom)){
                             outputArray.push(exact(pom));
                             outputArray.push(exact(changePom));
-
+                            }
+                            else {
+                                outputArray.push(exact(pom));
+                            }
+        
                         }
-
-                        if (checkPhrase.checked == true) {
-                            outputArray.push(phrase(pom));
-                            outputArray.push(phrase(changePom));
+        
+                        if (checkPhrase.checked) {
+                            if(diacriticsTest(pom)){
+                                outputArray.push(phrase(pom));
+                                outputArray.push(phrase(changePom));
+                            }
+                            else {
+                                outputArray.push(phrase(pom));
+                            }
+                           
                         }
-
-                        if (chcekBroad.checked == true) {
+        
+        
+                        if (chcekBroad.checked) {
+                            if(diacriticsTest(pom)){
                             outputArray.push(broad(pom));
                             outputArray.push(broad(changePom));
+                            }
+                            else {
+                                outputArray.push(broad(pom));
+                            }
+                            
                         }
-
-                    } else {
-                        if (checkExact.checked == true) {
-
-                            outputArray.push(exact(pom));
-                        }
-
-                        if (checkPhrase.checked == true) {
-                            outputArray.push(phrase(pom));
-                        }
-
-                        if (chcekBroad.checked == true) {
-                            outputArray.push(broad(pom));
-                        }
+        
+                       
                     }
+        
+                   else if(radioNoDia.checked) {
+                    var changePom = changeDiacritics(pom);
+        
+                    if (checkExact.checked)  {
+        
+                        outputArray.push(exact(changePom));
+        
+                    }
+        
+                    if (checkPhrase.checked ) {
+                       
+                        outputArray.push(phrase(changePom));
+                    }
+        
+                  
+        
+                    if (chcekBroad.checked) {
+                        
+                        outputArray.push(broad(changePom));
+                    }
+        
+        
+                   }
+        
+                   else {
+                    if (checkExact.checked)  {
+        
+                        outputArray.push(exact(pom));
+        
+                    }
+        
+                    if (checkPhrase.checked ) {
+                       
+                        outputArray.push(phrase(pom));
+                    }
+        
+                  
+        
+                    if (chcekBroad.checked) {
+                        
+                        outputArray.push(broad(pom));
+                    }
+                   }
 
                 }
             }
@@ -560,42 +664,89 @@ function concatenate() {
                         var pom = [pomArray1[k].toLowerCase(), pomArray2[l].toLowerCase(), pomArray3[m].toLowerCase()];
 
 
-                        if (diacriticsTest(pom) == true) {
-
+                        if (radioDiaAnNoDia.checked) {
                             var changePom = changeDiacritics(pom);
-
-
-                            if (checkExact.checked == true) {
-
+            
+                            if (checkExact.checked) {
+                                if(diacriticsTest(pom)){
                                 outputArray.push(exact(pom));
                                 outputArray.push(exact(changePom));
-
+                                }
+                                else {
+                                    outputArray.push(exact(pom));
+                                }
+            
                             }
-
-                            if (checkPhrase.checked == true) {
-                                outputArray.push(phrase(pom));
-                                outputArray.push(phrase(changePom));
+            
+                            if (checkPhrase.checked) {
+                                if(diacriticsTest(pom)){
+                                    outputArray.push(phrase(pom));
+                                    outputArray.push(phrase(changePom));
+                                }
+                                else {
+                                    outputArray.push(phrase(pom));
+                                }
+                               
                             }
-
-                            if (chcekBroad.checked == true) {
+            
+            
+                            if (chcekBroad.checked) {
+                                if(diacriticsTest(pom)){
                                 outputArray.push(broad(pom));
                                 outputArray.push(broad(changePom));
+                                }
+                                else {
+                                    outputArray.push(broad(pom));
+                                }
+                                
                             }
-
-                        } else {
-                            if (checkExact.checked == true) {
-
-                                outputArray.push(exact(pom));
-                            }
-
-                            if (checkPhrase.checked == true) {
-                                outputArray.push(phrase(pom));
-                            }
-
-                            if (chcekBroad.checked == true) {
-                                outputArray.push(broad(pom));
-                            }
+            
+                           
                         }
+            
+                       else if(radioNoDia.checked) {
+                        var changePom = changeDiacritics(pom);
+            
+                        if (checkExact.checked)  {
+            
+                            outputArray.push(exact(changePom));
+            
+                        }
+            
+                        if (checkPhrase.checked ) {
+                           
+                            outputArray.push(phrase(changePom));
+                        }
+            
+                      
+            
+                        if (chcekBroad.checked) {
+                            
+                            outputArray.push(broad(changePom));
+                        }
+            
+            
+                       }
+            
+                       else {
+                        if (checkExact.checked)  {
+            
+                            outputArray.push(exact(pom));
+            
+                        }
+            
+                        if (checkPhrase.checked ) {
+                           
+                            outputArray.push(phrase(pom));
+                        }
+            
+                      
+            
+                        if (chcekBroad.checked) {
+                            
+                            outputArray.push(broad(pom));
+                        }
+                       }
                     }
                 }
             }
@@ -614,42 +765,89 @@ function concatenate() {
 
                             var pom = [pomArray1[k].toLowerCase(), pomArray2[l].toLowerCase(), pomArray3[m].toLowerCase(), pomArray4[n].toLowerCase()];
 
-                            if (diacriticsTest(pom) == true) {
-
+                            if (radioDiaAnNoDia.checked) {
                                 var changePom = changeDiacritics(pom);
-
-
-                                if (checkExact.checked == true) {
-
+                
+                                if (checkExact.checked) {
+                                    if(diacriticsTest(pom)){
                                     outputArray.push(exact(pom));
                                     outputArray.push(exact(changePom));
-
+                                    }
+                                    else {
+                                        outputArray.push(exact(pom));
+                                    }
+                
                                 }
-
-                                if (checkPhrase.checked == true) {
-                                    outputArray.push(phrase(pom));
-                                    outputArray.push(phrase(changePom));
+                
+                                if (checkPhrase.checked) {
+                                    if(diacriticsTest(pom)){
+                                        outputArray.push(phrase(pom));
+                                        outputArray.push(phrase(changePom));
+                                    }
+                                    else {
+                                        outputArray.push(phrase(pom));
+                                    }
+                                   
                                 }
-
-                                if (chcekBroad.checked == true) {
+                
+                
+                                if (chcekBroad.checked) {
+                                    if(diacriticsTest(pom)){
                                     outputArray.push(broad(pom));
                                     outputArray.push(broad(changePom));
+                                    }
+                                    else {
+                                        outputArray.push(broad(pom));
+                                    }
+                                    
                                 }
-
-                            } else {
-                                if (checkExact.checked == true) {
-
-                                    outputArray.push(exact(pom));
-                                }
-
-                                if (checkPhrase.checked == true) {
-                                    outputArray.push(phrase(pom));
-                                }
-
-                                if (chcekBroad.checked == true) {
-                                    outputArray.push(broad(pom));
-                                }
+                
+                               
                             }
+                
+                           else if(radioNoDia.checked) {
+                            var changePom = changeDiacritics(pom);
+                
+                            if (checkExact.checked)  {
+                
+                                outputArray.push(exact(changePom));
+                
+                            }
+                
+                            if (checkPhrase.checked ) {
+                               
+                                outputArray.push(phrase(changePom));
+                            }
+                
+                          
+                
+                            if (chcekBroad.checked) {
+                                
+                                outputArray.push(broad(changePom));
+                            }
+                
+                
+                           }
+                
+                           else {
+                            if (checkExact.checked)  {
+                
+                                outputArray.push(exact(pom));
+                
+                            }
+                
+                            if (checkPhrase.checked ) {
+                               
+                                outputArray.push(phrase(pom));
+                            }
+                
+                          
+                
+                            if (chcekBroad.checked) {
+                                
+                                outputArray.push(broad(pom));
+                            }
+                           }
                         }
                     }
                 }
