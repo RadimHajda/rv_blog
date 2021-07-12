@@ -183,4 +183,15 @@ h6 {
   white-space: pre-line;
 }
 
+.no-bullets {
+  list-style-type:none;
+  padding: 0; 
+  margin: 0; 
+}
+
+.text {
+  text-align: left;
+  font-size: 22px;
+}
+
   
